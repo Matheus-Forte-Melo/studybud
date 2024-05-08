@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <title>StudyBuddy - Find study partners around the world!</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico'%}" type="image/x-icon">
+  </head>
+  <style>
+    .messages {
+      text-align: center;
+      margin: auto;
+      padding: 10px;
+      width: 15%;
+      list-style-type: none;
+    }
+  </style>
+  <body>
+      <!--#5dd693 #fc4b0b-->
+    {% include "../partial/navbar.html" %}
+
+    {% if messages %}
+    <ul class="messages"> 
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% block content %} <!-- Diz aonde os templates childs serão inseridos-->
+
+    {% endblock %}
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
+

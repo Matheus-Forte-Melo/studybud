@@ -1,0 +1,28 @@
+{% extends '../global/main.html' %}
+
+{% block content %}
+
+<style>
+    .home-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr; 
+    }
+</style>
+
+<div class="home-container"> <!-- Container da página Home, poderia ser um main né-->
+
+    <div>
+        {% include 'base/partial/topic_component.html' %}
+    </div>
+
+    <div>
+        {% include 'base/partial/feed_component.html' %}
+    </div>
+
+    <div>
+        {% include 'base/partial/activity_component.html' %}
+    </div>
+
+</div>
+
+{% endblock content %}

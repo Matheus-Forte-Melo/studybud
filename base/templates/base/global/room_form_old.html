@@ -1,0 +1,17 @@
+<!--Um template para formularios de sala-->
+{% extends '../global/main.html' %}
+
+{% block content %}
+
+<div>
+    <form action="" method="POST"> 
+        <!-- Se não especificar a URL da ação ele vai ficar na mesma URL-->
+        {% csrf_token %} <!-- Segurança, sempre tem que mandar no form -->
+        {{form.as_p}} 
+    
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+{% endblock content %}

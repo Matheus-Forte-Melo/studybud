@@ -1,0 +1,59 @@
+{% extends '../global/main.html' %}
+
+{% block content %}
+<body>
+  <main class="profile-page layout layout--3">
+    <div class="container">
+      
+      <!-- Topic List Start-->
+      {% include "base/partial/topic_component.html" %}
+      <!-- Topic List End-->
+        
+      <!-- Room List Start -->
+      <div class="roomList">
+        <div class="profile">
+          <div class="profile__avatar">
+            <div class="avatar avatar--large active">
+              <img src="{{user.avatar.url}}" />
+            </div>
+          </div>
+          <div class="profile__info">
+            <h3>{{user.name}}</h3>
+            <p>@{{user.username}}</p>
+            {% if user == request.user %}
+            <a href="{% url 'update-profile' request.user.id %}" class="btn btn--main btn--pill">Edit Profile</a>
+            {% endif %}
+          </div>
+          <div class="profile__about">
+            <h3>About</h3>
+            <p>
+              {{user.bio}}
+            </p>
+          </div>
+        </div>
+
+        <div class="roomList__header">
+          <div>
+            {% if rooms.count != 1 %}
+              <h2> {{rooms.count}} {{selected_topic}} Study Rooms Hosted by {{user.username}}</a>
+            {% else %}
+            <h2> {{rooms.count}} {{selected_topic}} Study Room Hosted by {{user.username}}</a>
+            {% endif %}
+
+            </h2>
+          </div>
+        </div>
+
+        {% include "base/partial/feed_component.html" %}
+
+      </div>
+      <!-- Room List End -->
+
+      <!-- Activity List Start -->
+      {% include "base/partial/activity_component.html" %}
+      <!-- Activity List End -->
+
+    </div>
+  </main>
+</body>
+{% endblock %}
