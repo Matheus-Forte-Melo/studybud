@@ -1,3 +1,5 @@
-.venv/Scripts/activate
+
+
+source .venv/bin/activate
 pip install -r requirements.txt
 python3.12 manage.py collectstatic
