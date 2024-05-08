@@ -19,3 +19,12 @@ class MyUserCreationForm (UserCreationForm):
     class Meta:
         model = User
         fields = ('name', 'username', 'email', 'password1', 'password2')
+
+    def __init__(self, *args, **kwargs):
+        super(MyUserCreationForm, self).__init__(*args, **kwargs)
+        
+        self.fields['name'].widget.attrs['placeholder'] = 'Your Name'
+        self.fields['username'].widget.attrs['placeholder'] = 'your_username'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Password'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm password'
