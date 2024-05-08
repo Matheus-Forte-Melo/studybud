@@ -146,3 +146,5 @@ AUTH_USER_MODEL = 'base.User'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
 MEDIA_URL = '/images/'
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" 
