@@ -10,6 +10,16 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+# Configs cloudinary
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+    cloud_name='dtg2hqefp',
+    api_key='267359831347167',
+    api_secret='yPePVXwasrhpOkQLjdI1aP-Dkdg'
+)
 
 from pathlib import Path
 
