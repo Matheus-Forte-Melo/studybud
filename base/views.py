@@ -68,6 +68,8 @@ def logoutPage(request):
     return redirect('home')
 
 def registerPage(request):
+    default_avatar = "https://res.cloudinary.com/dtg2hqefp/image/upload/v1715298617/zfkqmvyxuv2fqy57z5an.svg"
+    
     form = MyUserCreationForm()
 
     if request.method == 'POST':
@@ -78,6 +80,8 @@ def registerPage(request):
             # Commit do banco desligado, a formação será salva só posteriormente
             user.username = user.username.lower()
             user.email = user.email.lower()
+            # Configurando imagem default
+            user.avatar = default_avatar
             user.save()
             login(request, user)
             return redirect('home')
