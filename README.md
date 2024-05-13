@@ -22,3 +22,5 @@ Adendo 2: Abra a pasta Studybud e navegue até a pasta settings.py e abra o arqu
 
 ![image](https://github.com/Matheus-Forte-Melo/studybud/assets/114398115/166cecab-3abe-4d3d-a290-407454cb8fa4)
 
+Caso nada funcione e você ainda queira ver o projeto, veja: <br>
+[https://studio.youtube.com/video/_fO4U4BB8Wk/edit ](https://youtu.be/_fO4U4BB8Wk)
