@@ -77,16 +77,17 @@ def registerPage(request):
         # Instanciamos o formulario com os dados enviados no POST
         if form.is_valid():
             user = form.save(commit=False) 
-            # Commit do banco desligado, a formação será salva só posteriormente
-            user.username = user.username.lower()
+            # Commit do banco desligado, a formação será salva só posteriormente. -- Validação.
+            user.username = user.username.lower().strip()
+            user.username = user.username.replace(' ', '_')
             user.email = user.email.lower()
             # Configurando imagem default
             user.avatar = default_avatar
             user.save()
             login(request, user)
             return redirect('home')
-        else: 
-            flash_message.error(request, 'An error occured during registration') 
+        else:
+            flash_message.error(request, "An error occured during registration. ") 
 
     page = 'register'
     context = {'page': page, 'form': form}
