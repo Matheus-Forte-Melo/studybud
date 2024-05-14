@@ -37,7 +37,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['studybud-o8cr.onrender.com', 'studybud-1-9ba9.onrender.com' , '.now.sh', '127.0.0.1', 'localhost']
 
@@ -166,3 +166,4 @@ MEDIA_URL = '/images/'
 
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage" 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" 
+
