@@ -2,8 +2,9 @@
  Rede Social desenvolvida em Django
 
 LINKS: <br br>
+Servidor em  Oregon (aparentemente mais rapido) : https://studybud-o8cr.onrender.com <br>
 Servidor em Ohio: https://studybud-1-9ba9.onrender.com <br>
-Servidor em  Oregon: https://studybud-o8cr.onrender.com <br>
+
 
 <h1>Passos para instalação em ambiente local</h1>
 
