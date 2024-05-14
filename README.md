@@ -1,7 +1,7 @@
 # studybud
  Rede Social desenvolvida em Django
 
-LINKS:
+LINKS: <br br>
 Servidor em Ohio: https://studybud-1-9ba9.onrender.com <br>
 Servidor em  Oregon: https://studybud-o8cr.onrender.com <br>
 
