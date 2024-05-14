@@ -90,24 +90,24 @@ WSGI_APPLICATION = 'studybud.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # Database original
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# Database em cloud
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "railway",
-#         "USER": "postgres",
-#         "PASSWORD": os.environ.get('DB_CLOUD_PASSWORD'),
-#         "HOST": "monorail.proxy.rlwy.net",
-#         "PORT": "48442",
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+# Database em cloud
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "railway",
+        "USER": "postgres",
+        "PASSWORD": os.environ.get('DB_CLOUD_PASSWORD'),
+        "HOST": "monorail.proxy.rlwy.net",
+        "PORT": "48442",
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
