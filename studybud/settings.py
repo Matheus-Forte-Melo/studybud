@@ -167,3 +167,9 @@ MEDIA_URL = '/images/'
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage" 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" 
 
+import sentry_sdk
+
+sentry_sdk.init(
+    dsn="https://adc1d6d7a95bdb2b7f0f50abf244447a@o4507255270277120.ingest.us.sentry.io/4507255272570880",
+    enable_tracing=True,
+)
