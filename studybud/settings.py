@@ -39,7 +39,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['studybud-o8cr.onrender.com', 'studybud-1-9ba9.onrender.com' , '.now.sh', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['studybud-o8cr.onrender.com', 'studybud-1-9ba9.onrender.com', 'studybud-done-test.onrender.com', '.now.sh', '127.0.0.1', 'localhost']
 
 
 # Application definition
