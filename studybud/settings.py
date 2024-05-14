@@ -1,4 +1,7 @@
-import os
+from dotenv import load_dotenv
+import os 
+load_dotenv()
+
 """
 Django settings for studybud project.
 
@@ -18,7 +21,7 @@ import cloudinary.api
 cloudinary.config(
     cloud_name='dtg2hqefp',
     api_key='267359831347167',
-    api_secret='yPePVXwasrhpOkQLjdI1aP-Dkdg'
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET')
 )
 
 from pathlib import Path
@@ -31,10 +34,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f98r=&yw+#^q3urlsvu_0m6s7(#)i*i%bo8%o4vvua&rmtny1*'
+SECRET_KEY = os.environ.get('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['studybud-o8cr.onrender.com', 'studybud-1-9ba9.onrender.com' , '.now.sh', '127.0.0.1', 'localhost']
 
@@ -87,25 +90,24 @@ WSGI_APPLICATION = 'studybud.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # Database original
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER": "postgres",
-        "PASSWORD": "zJDRqDoLvXWEmhYCUmVxgTJLAKkfKgQf",
-        "HOST": "monorail.proxy.rlwy.net",
-        "PORT": "48442",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Database em cloud
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "railway",
+#         "USER": "postgres",
+#         "PASSWORD": os.environ.get('DB_CLOUD_PASSWORD'),
+#         "HOST": "monorail.proxy.rlwy.net",
+#         "PORT": "48442",
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -155,7 +157,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'base.User'
 
+
+# Static and Media configs
+
 MEDIA_ROOT = BASE_DIR / 'static/images'
+
 MEDIA_URL = '/images/'
 
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage" 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" 
