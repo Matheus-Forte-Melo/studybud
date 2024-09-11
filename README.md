@@ -1,10 +1,16 @@
-# studybud
- Rede Social desenvolvida em Django
+<h1>Rede Social para criação de grupos de estudo desenvolvida em Django</h1>
 
-LINKS: <br br>
+LINKS: <br>
 Opção 1 (Use essa) : https://studybud-o8cr.onrender.com <br>
 Opção 2: https://studybud-1-9ba9.onrender.com <br>
 
+
+<h2>Screenshots</h2>
+
+![Home Page](https://i.imgur.com/N1boQA8.png)
+![Room](https://i.imgur.com/xHz4Ai9.png)
+![Profile Page](https://i.imgur.com/8Hd2Wx7.png)
+<hr>
 
 <h1>Passos para instalação em ambiente local</h1>
 
