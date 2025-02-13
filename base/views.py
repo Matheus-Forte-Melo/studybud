@@ -1,15 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages as flash_message # Também tem a classe Messages, prov pra criar mensagens custom mas eu n sei usar, usar doc
+from django.db.models import Count
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Room, Message, Topic, User
 from .forms import RoomForm, UserForm, MyUserCreationForm
-
-# Funções que são executados ao determinada URL ser acessadas
-# Queries de base de dados, templates e etc. Pode ser uma classe tambem
-# class views são complicadas mas são boas de usar, pesquisar tut futuramente
 
 def userProfile(request, pk):
     request.session['last_url'] = request.path
@@ -62,7 +59,6 @@ def loginPage(request):
     context = {'page': page} # Joga o nome da pagina para dentro do dict
     return render(request, 'base/partial/login_register.html', context=context)
 
-
 def logoutPage(request):
     logout(request) 
     return redirect('home')
@@ -93,22 +89,28 @@ def registerPage(request):
     context = {'page': page, 'form': form}
     return render(request, 'base/partial/signup.html', context)
 
+
 def home(request):
-    # rooms = Room.objects.all().order_by('-created')
+    # Prefetch_related para join com many to many
+    # select_related para one to many
+
     q = request.GET.get('q', '') 
 
     if q.startswith("@"):
-        rooms = Room.objects.filter(host__username=q[1:])   
+        rooms = Room.objects.filter(host__username=q[1:]).select_related("host", "topic")  
     else:
-        rooms = Room.objects.filter(
+        rooms = Room.objects.annotate(participant_count=Count("participants")).filter(
             Q(topic__name__icontains=q) |
             Q(name__icontains=q) 
-            ) 
+            ).select_related("host", "topic")
 
-    messages = Message.objects.filter(room__topic__name__icontains=q)[0:8]
-    topics = Topic.objects.all()
-    request.session['last_url'] = request.path # Fica de oio nisso, se tiver algo dando errado com redirecioamento, isso é o culpado
-    
+    # Dei join, então invez de eu tentar fazer outra querie, eu só pego da mesma. 
+    messages = Message.objects.filter(room__topic__name__icontains=q).select_related("user", "room")[0:5]
+    # Pega todos as ocorrencias e adicionar também, só pode ser usado para pegar AVG, MAX, MIN count e esse tipo  de coisa do django.db.models.
+    topics = Topic.objects.annotate(room_count=Count('room')) 
+
+    request.session['last_url'] = request.path 
+
     context = {'rooms':rooms, 'topics': topics, 'room_count': rooms.count(), 'chat_messages': messages, 'selected_topic': q}
     return render(request, 'base/partial/home.html', context=context) 
 
