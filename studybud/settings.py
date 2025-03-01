@@ -101,11 +101,11 @@ WSGI_APPLICATION = 'studybud.wsgi.app'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER": "postgres",
+        "NAME": "postgres",
+        "USER": "postgres.ezyuxepvbmvsbjdtbvnv",
         "PASSWORD": os.environ.get('DB_CLOUD_PASSWORD'),
-        "HOST": "monorail.proxy.rlwy.net",
-        "PORT": "48442",
+        "HOST": "aws-0-sa-east-1.pooler.supabase.com",
+        "PORT": "6543",
     }
 }
 
